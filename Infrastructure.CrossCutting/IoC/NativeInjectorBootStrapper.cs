@@ -10,7 +10,9 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Services;
+using MediatR;
 using Services.Base;
+using System.Reflection;
 
 namespace IoC
 {
@@ -20,6 +22,9 @@ namespace IoC
         {
             // ASPNET
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //MediatR
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             // Domain Bus (Mediator)
             services.AddScoped<IMediatorHandler, MediatorHandler>();

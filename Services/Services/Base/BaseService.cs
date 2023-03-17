@@ -54,7 +54,7 @@ namespace Services.Base
             if (!_notifications.HasNotifications())
             {
                 _baseRepository.Add(obj);
-                if (!_notifications.HasNotifications())
+                if (_unitOfWork.Commit())
                     return new OperationResult<TEntity>(true, obj);
             }
             return new OperationResult<TEntity>(false, obj);
@@ -66,7 +66,7 @@ namespace Services.Base
             if (!_notifications.HasNotifications())
             {
                 _baseRepository.Update(obj);
-                if (!_notifications.HasNotifications())
+                if (_unitOfWork.Commit())
                     return new OperationResult<TEntity>(true, obj);
             }
             return new OperationResult<TEntity>(false, obj);

@@ -2,6 +2,7 @@
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Services.Validators
@@ -23,9 +24,7 @@ namespace Services.Validators
                 .WithMessage("A altura do competidor deve ser maior que 0.");
 
             RuleFor(x => x.Sexo)
-                .NotEqual('M')
-                .NotEqual('F')
-                .NotEqual('O')
+                .Must(x => new[] { 'M', 'F', 'O' }.Contains(x))
                 .WithMessage("Insira uma opção de sexo válida (M, F ou O [outros])");
         }
     }
