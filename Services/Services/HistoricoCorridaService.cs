@@ -9,8 +9,6 @@ using Services.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Services.Services
 {
@@ -29,9 +27,23 @@ namespace Services.Services
                             .Include(x => x.Competidor);
         }
 
-        private IQueryable<HistoricoCorrida> ObterTodos()
+        public IQueryable<HistoricoCorrida> ObterTodos()
         {
             return DefaultQuery().OrderBy(x => x.DataCorrida);
+        }
+
+        public IQueryable<HistoricoCorrida> ObterPistasUtilizadas()
+        {
+            var historico = ObterTodos();
+
+            var pistas = new List<int>();
+
+            foreach(var corrida in historico)
+            {
+                pistas.Add(corrida.PistaCorridaId);
+            }
+
+            return DefaultQuery().Where(x => pistas.Contains(x.PistaCorridaId));
         }
     }
 }

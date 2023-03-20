@@ -12,6 +12,14 @@ namespace Services.Validators
         {
             RuleFor(x => x.DataCorrida)
                 .LessThan(DateTime.Now);
+
+            RuleFor(x => x.CompetidorId)
+                .NotNull()
+                .WithMessage("Informe o corredor.");
+
+            RuleFor(x => x.PistaCorridaId)
+                .NotNull()
+                .WithMessage("Informe a pista de corrida.");
         }
     }
 }

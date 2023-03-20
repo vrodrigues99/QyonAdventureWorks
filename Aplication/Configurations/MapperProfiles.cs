@@ -11,6 +11,12 @@ namespace Aplication.Configurations
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CompetidoresViewModel, Competidores>();
+                cfg.CreateMap<Competidores, CompetidoresViewModel>();
+
+                cfg.CreateMap<PistaViewModel, PistaCorrida>();
+                cfg.CreateMap<PistaCorrida, PistaViewModel>();
+
+                cfg.CreateMap<HistoricoViewModel, HistoricoCorrida>();
             });
 
             return config;

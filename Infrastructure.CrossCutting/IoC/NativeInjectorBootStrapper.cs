@@ -13,6 +13,7 @@ using Services;
 using MediatR;
 using Services.Base;
 using System.Reflection;
+using Services.Services;
 
 namespace IoC
 {
@@ -44,7 +45,7 @@ namespace IoC
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IBaseService<Competidores>, BaseService<Competidores>>();
             services.AddScoped<IBaseService<PistaCorrida>, BaseService<PistaCorrida>>();
-            services.AddScoped<IBaseService<HistoricoCorrida>, BaseService<HistoricoCorrida>>();
+            services.AddScoped<HistoricoCorridaService>();
         }
     }
 }

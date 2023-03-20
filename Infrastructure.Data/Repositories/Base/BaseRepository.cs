@@ -53,6 +53,8 @@ namespace Infrastructure.Data.Repositories.Base
         public void Remove(int id)
         {
             Model.Remove(GetById(id));
+
+            SaveChanges();
         }
 
         public void Remove(Expression<Func<TEntity, bool>> predicate)

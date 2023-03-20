@@ -8,7 +8,6 @@ namespace Domain.Entities
     public class PistaCorrida : BaseEntity
     {
         public string Descricao { get; set; }
-        public string Descricao2 { get; set; }
 
         public PistaCorrida()
         {
